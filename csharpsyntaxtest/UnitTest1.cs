@@ -1,4 +1,5 @@
 using System;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Xunit;
 
 namespace csharpsyntax

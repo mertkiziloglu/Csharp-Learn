@@ -9,14 +9,40 @@ namespace csharpsyntax
         [Fact]
         public void Test1()
         {
-           var book=getbook("book1");
+            var book3 = getbook("book3");
+            Setname(book3, "New Name");
+            Assert.Equal("New Name",book3.name);
+        }
+
+        private void Setname(book book3, string name)
+        {
+            book3.name = name;
+        }
+
+        [Fact]
+        public void Getbookreturnsdifferentobject()
+        {
+           var book1=getbook("book1");
          
            var book2=getbook("book2");
-           Assert.Equal("book1",book.name);
+           Assert.Equal("book1",book1.name);
            Assert.Equal("book2",book2.name);
         }    
         
-                
+        [Fact]
+       
+        // two variables can refereans same object.
+        // iki değişken aynı nesneyi referans alabilir mi ?
+        public void Twovarscanreferanssameobject()
+        {
+            var book1=getbook("book1");
+            var book2 = book1;
+            /*Assert.Equal("book1",book1.name);
+            Assert.Equal("book1",book2.name);*/
+            Assert.Same(book1,book2);
+            Assert.True(object.ReferenceEquals(book1,book2));
+            
+        }
         book getbook(string name)
         {
             return new book(name);
